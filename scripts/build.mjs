@@ -47,7 +47,18 @@ if (problems.length) {
 }
 
 // --- write -----------------------------------------------------------------
-const outFile = (route) => path.join(root, route === '/' ? '' : route, 'index.html');
+// Local build: writes next to the sources at the repo root, served from "/".
+// Pages build (GitHub Actions): BASE_PATH=/creditplus OUT_DIR=dist writes a self-contained
+// folder whose root-relative URLs are prefixed with the project path.
+const BASE = (process.env.BASE_PATH || '').replace(/\/$/, '');
+const out = process.env.OUT_DIR ? path.resolve(root, process.env.OUT_DIR) : root;
+const rebase = (html) =>
+  BASE
+    ? html
+        .replace(/(href|src)="\/(?!\/)/g, '$1="' + BASE + '/')
+        .replace(/(srcset="|, )\/assets\//g, '$1' + BASE + '/assets/')
+    : html;
+const outFile = (route) => path.join(out, route === '/' ? '' : route, 'index.html');
 const write = (file, content) => {
   fs.mkdirSync(path.dirname(file), { recursive: true });
   fs.writeFileSync(file, content);
@@ -67,7 +78,7 @@ for (const [route, r] of Object.entries(routes)) {
   for (const m of html.matchAll(/<a [^>]*data-apply[^>]*>([^<]*)</g)) {
     if (m[1] !== 'Get my quote') ctaProblems.push(`${route}: apply CTA labelled "${m[1]}" (use CTA_LABEL only)`);
   }
-  write(outFile(route), html);
+  write(outFile(route), rebase(html));
 }
 if (ctaProblems.length) {
   console.error('Build failed:\n - ' + ctaProblems.join('\n - '));
@@ -75,16 +86,16 @@ if (ctaProblems.length) {
 }
 
 // Old URL kept alive as a redirect stub (GitHub Pages and similar can't send HTTP redirects).
-const target = '/car-finance/#bad-credit';
+const target = `${BASE}/car-finance/#bad-credit`;
 write(
-  path.join(root, 'bad-credit-car-finance', 'index.html'),
+  path.join(out, 'bad-credit-car-finance', 'index.html'),
   `<!doctype html>
 <html lang="en-GB">
 <head>
 <meta charset="utf-8">
 <title>Bad credit car finance | Creditplus</title>
 <meta name="robots" content="noindex">
-<link rel="canonical" href="${company.siteUrl}${target}">
+<link rel="canonical" href="${company.siteUrl}/car-finance/#bad-credit">
 <meta http-equiv="refresh" content="0; url=${target}">
 <script>location.replace(${JSON.stringify(target)});</script>
 </head>
@@ -94,7 +105,7 @@ write(
 );
 
 write(
-  path.join(root, 'sitemap.xml'),
+  path.join(out, 'sitemap.xml'),
   `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 ${Object.keys(routes)
@@ -105,6 +116,12 @@ ${Object.keys(routes)
 );
 
 // Blocked until launch so a preview copy isn't indexed.
-write(path.join(root, 'robots.txt'), 'User-agent: *\nDisallow: /\n');
+write(path.join(out, 'robots.txt'), 'User-agent: *\nDisallow: /\n');
+
+// Pages build: bring the assets along and stop Jekyll processing.
+if (out !== root) {
+  fs.cpSync(path.join(root, 'assets'), path.join(out, 'assets'), { recursive: true });
+  write(path.join(out, '.nojekyll'), '');
+}
 
 console.log(`Built ${Object.keys(routes).length} pages + redirect stub, sitemap.xml, robots.txt`);
