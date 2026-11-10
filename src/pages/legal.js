@@ -28,7 +28,7 @@ export const cookies = () =>
   page('Cookie policy', 'What cookies this website uses and how you can control them.', [
     ['What are cookies?', '<p>Cookies are small files stored on your device when you visit a website. They help sites work and can tell the site owner how it is used.</p>'],
     ['What we use', '<p>[Compliance to confirm. At launch this site is intended to use only essential cookies and no analytics or advertising cookies. If that changes, this page will be updated and we will ask for your consent where required.]</p>'],
-    ['Third-party content', '<p>Fonts are loaded from Google Fonts, which may receive your IP address. [Confirm whether fonts will be self-hosted before launch.]</p>'],
+    ['Third-party content', '<p>The fonts on this site are served from our own domain, so your browser does not contact a font provider. Links to other sites, such as the application form, are covered by their own policies.</p>'],
     ['Controlling cookies', '<p>You can delete or block cookies in your browser settings. Doing so may affect how some sites work.</p>'],
   ]);
 

@@ -86,8 +86,7 @@ const footer = () => `
       <p>&copy; 2026 ${company.name}. All rights reserved.</p>
     </div>
   </div>
-</footer>
-<div class="sticky-cta">${applyButton('btn--lg', 'sticky-mobile')}</div>`;
+</footer>`;
 
 export function layout({ path, body, extraHead = '', scripts = '', robots = '' }) {
   const bleed = body.includes('hero--bleed');
@@ -110,9 +109,7 @@ ${robots}
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#C21BB3">
 <link rel="icon" type="image/svg+xml" href="/assets/img/favicon.svg">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="preload" href="/assets/fonts/figtree-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/assets/css/styles.css">
 ${orgJsonLd()}
 ${extraHead}

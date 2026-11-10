@@ -70,9 +70,9 @@ for (const [route, r] of Object.entries(routes)) {
   const html = layout({ path: route, body: r.render(), scripts: r.scripts || '' });
   // CTA-first rules: every page must push people to the apply form, prominently and everywhere.
   const apply = html.match(/<a [^>]*data-apply[^>]*>/g) || [];
-  if (apply.length < 5) ctaProblems.push(`${route}: only ${apply.length} apply CTAs (min 5)`);
+  if (apply.length < 4) ctaProblems.push(`${route}: only ${apply.length} apply CTAs (min 4)`);
   for (const a of apply) if (!a.includes(`href="${APPLY}"`)) ctaProblems.push(`${route}: apply CTA with wrong href: ${a.slice(0, 80)}`);
-  for (const pos of ['header', 'band', 'sticky-mobile']) {
+  for (const pos of ['header', 'header-mobile', 'band']) {
     if (!html.includes(`data-cta="${pos}"`)) ctaProblems.push(`${route}: missing ${pos} CTA`);
   }
   for (const m of html.matchAll(/<a [^>]*data-apply[^>]*>([^<]*)</g)) {

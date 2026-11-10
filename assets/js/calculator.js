@@ -53,7 +53,7 @@ function render() {
   err.hidden = !message;
   err.textContent = message;
 
-  const links = document.querySelectorAll('#calc-result [data-apply], #calc-bar [data-apply]');
+  const links = document.querySelectorAll('#calc-result [data-apply], .calc-mini [data-apply]');
   if (message) {
     ['r-monthly', 'bar-monthly'].forEach((id) => ($(id).textContent = '—'));
     return;
@@ -64,6 +64,8 @@ function render() {
   $('r-monthly').textContent = gbp(r.monthly);
   $('bar-monthly').textContent = gbp(r.monthly);
   $('r-apr').textContent = apr;
+  $('mini-term').textContent = state.term;
+  $('mini-apr').textContent = apr;
   $('r-apr2').textContent = apr + '%';
   $('r-price').textContent = gbp(p);
   $('r-deposit').textContent = gbp(d);
@@ -110,12 +112,6 @@ root.querySelectorAll('[data-seg]').forEach((group) =>
     render();
   }),
 );
-
-// Mobile sticky result bar, hidden while the full result card is on screen.
-const bar = $('calc-bar');
-if (bar && 'IntersectionObserver' in window) {
-  new IntersectionObserver(([e]) => (bar.hidden = e.isIntersecting), { threshold: 0.2 }).observe($('calc-result'));
-}
 
 [price, deposit].forEach(fill);
 syncDepositMax();

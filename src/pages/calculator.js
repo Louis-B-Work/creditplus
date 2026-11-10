@@ -44,6 +44,10 @@ ${pageHero({
 <section class="section-space calc-section">
   <div class="page-shell">
     <div class="calc" id="calc" data-defaults='${JSON.stringify(d)}'>
+      <div class="calc-mini">
+        <p class="calc-mini-text"><span class="calc-mini-label"><span id="mini-term">48</span> payments of</span> <strong id="bar-monthly">&pound;0</strong> <span class="calc-mini-apr">at <span id="mini-apr">10.9</span>% APR</span></p>
+        ${applyButton('btn--sm', 'calc-mini')}
+      </div>
       <div class="calc-inputs card">
         <p class="fineprint calc-note">For illustration purposes only. The rate and payment you may be offered will be based on your individual circumstances.</p>
         ${slider('price', 'Vehicle price', 3000, 50000, 500, d.price, '&pound;')}
@@ -85,10 +89,6 @@ ${pageHero({
         </div>
       </div>
     </div>
-  </div>
-  <div class="calc-bar" id="calc-bar" hidden>
-    <span>Est. monthly <strong id="bar-monthly">&pound;0</strong></span>
-    ${applyButton('btn--sm', 'calc-bar')}
   </div>
 </section>
 

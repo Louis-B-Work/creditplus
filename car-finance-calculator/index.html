@@ -15,9 +15,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#C21BB3">
 <link rel="icon" type="image/svg+xml" href="/assets/img/favicon.svg">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="preload" href="/assets/fonts/figtree-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/assets/css/styles.css">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"FinancialService","name":"Creditplus","url":"https://www.creditplus.co.uk/","description":"Car finance broker. Creditplus is a credit broker, not a lender."}</script>
 
@@ -64,6 +62,10 @@
 <section class="section-space calc-section">
   <div class="page-shell">
     <div class="calc" id="calc" data-defaults='{"price":10000,"deposit":0,"term":48,"score":"excellent","type":"hp"}'>
+      <div class="calc-mini">
+        <p class="calc-mini-text"><span class="calc-mini-label"><span id="mini-term">48</span> payments of</span> <strong id="bar-monthly">&pound;0</strong> <span class="calc-mini-apr">at <span id="mini-apr">10.9</span>% APR</span></p>
+        <a class="btn btn--sm" href="https://apply.carfinance247.co.uk/" data-apply data-cta="calc-mini">Get my quote<span class="arrow" aria-hidden="true">&rarr;</span></a>
+      </div>
       <div class="calc-inputs card">
         <p class="fineprint calc-note">For illustration purposes only. The rate and payment you may be offered will be based on your individual circumstances.</p>
         
@@ -133,10 +135,6 @@
         </div>
       </div>
     </div>
-  </div>
-  <div class="calc-bar" id="calc-bar" hidden>
-    <span>Est. monthly <strong id="bar-monthly">&pound;0</strong></span>
-    <a class="btn btn--sm" href="https://apply.carfinance247.co.uk/" data-apply data-cta="calc-bar">Get my quote<span class="arrow" aria-hidden="true">&rarr;</span></a>
   </div>
 </section>
 
@@ -240,7 +238,6 @@
     </div>
   </div>
 </footer>
-<div class="sticky-cta"><a class="btn btn--lg" href="https://apply.carfinance247.co.uk/" data-apply data-cta="sticky-mobile">Get my quote<span class="arrow" aria-hidden="true">&rarr;</span></a></div>
 <script>window.CP_APPLY_URL="https://apply.carfinance247.co.uk/";</script>
 <script src="/assets/js/main.js" defer></script>
 <script type="module" src="/assets/js/calculator.js"></script>

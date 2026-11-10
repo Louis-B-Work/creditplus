@@ -1,3 +1,4 @@
+@font-face{font-family:"Figtree";font-style:normal;font-weight:400 900;font-display:swap;src:url(../fonts/figtree-latin.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
 /* Creditplus v2. Tokens, type scale, layout, components. */
 :root{
   --magenta:#C21BB3; --magenta-dark:#a8159b; --blue:#2B4ADF; --navy:#203757; --navy-deep:#142640; --pink:#C50084;
@@ -8,6 +9,7 @@
   --radius:16px;
 }
 *{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
 html{scroll-behavior:smooth;scroll-padding-top:90px}
 body{margin:0;background:var(--surface);color:var(--ink);font-family:var(--font-body);font-size:17px;line-height:1.65;-webkit-font-smoothing:antialiased}
 img{max-width:100%;display:block}
@@ -65,7 +67,7 @@ h1,h2,h3{font-family:var(--font-display);color:var(--navy);margin:0 0 .5em;line-
 .btn-row{display:flex;flex-wrap:wrap;gap:12px;margin:1.6rem 0 1rem}
 
 /* header */
-.site-header{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.96);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.site-header{position:sticky;top:0;z-index:100;background:#fff;border-bottom:1px solid var(--line)}
 .header-inner{display:flex;align-items:center;justify-content:space-between;height:76px}
 .desktop-nav{display:flex;align-items:center;gap:8px}
 .desktop-nav ul{display:flex;list-style:none;gap:4px;margin-right:8px}
@@ -207,7 +209,6 @@ input[type=range]::-moz-range-thumb{width:20px;height:20px;border-radius:50%;bac
 .result-list dt{color:var(--muted)}
 .result-list dd{margin:0;font-weight:700;color:var(--navy)}
 [hidden]{display:none!important}
-.calc-bar{display:none}
 
 /* footer */
 .site-footer{background:var(--navy-deep);color:#cfd8e6;padding-top:clamp(3rem,6vw,4.5rem);font-size:.95rem;overflow:hidden}
@@ -220,7 +221,6 @@ input[type=range]::-moz-range-thumb{width:20px;height:20px;border-radius:50%;bac
 .foot-blurb{margin:1rem 0 0;max-width:34ch}
 .legal{border-top:1px solid rgba(255,255,255,.16);margin-top:2.5rem;padding-top:1.5rem;font-size:.85rem;max-width:90ch}
 .placeholder{background:rgba(255,255,255,.07);border:1px dashed rgba(255,255,255,.4);border-radius:8px;padding:.8rem 1rem}
-.sticky-cta{display:none}
 
 /* responsive */
 @media (max-width:1100px){
@@ -235,12 +235,6 @@ input[type=range]::-moz-range-thumb{width:20px;height:20px;border-radius:50%;bac
   .cols-4,.cols-3,.steps{grid-template-columns:1fr 1fr}
   .foot-grid{grid-template-columns:1fr 1fr}
   .calc-result{position:static}
-  .site-footer{padding-bottom:84px}
-  .sticky-cta{display:block;position:fixed;left:0;right:0;bottom:0;z-index:90;background:#fff;border-top:1px solid var(--line);padding:10px 16px;box-shadow:0 -6px 20px rgba(32,55,87,.12)}
-  .sticky-cta .btn{width:100%;justify-content:center}
-  body:has(.calc-bar:not([hidden])) .sticky-cta{display:none}
-  .calc-bar{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:91;background:#fff;border-top:1px solid var(--line);padding:10px 16px;box-shadow:0 -6px 20px rgba(32,55,87,.12);align-items:center;justify-content:space-between;gap:12px;font-weight:600;color:var(--navy)}
-  .calc-bar strong{font-family:var(--font-display);font-size:1.3rem;display:block}
 }
 @media (max-width:640px){
   .cols-4,.cols-3,.steps,.foot-grid{grid-template-columns:1fr}
@@ -267,7 +261,7 @@ input[type=range]::-moz-range-thumb{width:20px;height:20px;border-radius:50%;bac
 /* transparent header over full-bleed heroes (class set by JS; solid without it) */
 .has-bleed .site-header{position:fixed;left:0;right:0;top:0;width:100%}
 .has-bleed .site-header,.has-bleed .wordmark{transition:background .25s,border-color .25s}
-.hdr-clear .site-header{background:transparent;border-bottom-color:transparent;backdrop-filter:none}
+.hdr-clear .site-header{background:transparent;border-bottom-color:transparent}
 .hdr-clear .logo .wordmark{background:none;color:#fff;-webkit-text-fill-color:#fff}
 .hdr-clear .desktop-nav>ul>li>a,.hdr-clear .sub-toggle,.hdr-clear .menu-toggle{color:#fff}
 .hdr-clear .desktop-nav>ul>li>a:hover,.hdr-clear .desktop-nav>ul>li>a[aria-current],.hdr-clear .sub-toggle:hover{color:#ff9df2}
@@ -366,7 +360,7 @@ input[type=range]::-moz-range-thumb{width:20px;height:20px;border-radius:50%;bac
   .hero--left .hero-inner>*,.hero--left .type-h1{max-width:100%}
   .hero--left .type-h1{font-size:clamp(2.2rem,9vw,3.2rem)}
   .hero--left .hero-bg img{object-position:66% 100%;transform:translateY(27%);transform-origin:center;-webkit-mask-image:linear-gradient(to bottom,transparent 0,#000 22%);mask-image:linear-gradient(to bottom,transparent 0,#000 22%)}
-  .hero--left .type-lead,.hero--left .fineprint,.hero--left .hero-note{display:none}
+
   .hero--left .hero-bg::after{background:linear-gradient(180deg,rgba(20,38,64,.9) 0%,rgba(20,38,64,.72) 40%,rgba(20,38,64,.1) 62%,rgba(20,38,64,.15) 80%,rgba(20,38,64,.75) 100%)}
 }
 
@@ -383,3 +377,136 @@ input[type=range]::-moz-range-thumb{width:20px;height:20px;border-radius:50%;bac
 /* closing band headline on one line */
 .cta-band .type-h2{max-width:none;font-size:clamp(2rem,5vw,4.4rem)}
 @media (min-width:600px){.cta-band .type-h2{white-space:nowrap}}
+
+/* v3.5 phones: smaller, content-width buttons; no bottom sticky bar */
+@media (max-width:960px){
+  .btn--lg{font-size:1.02rem;padding:.8em 1.6em;box-shadow:0 6px 18px rgba(194,27,179,.35)}
+  .hero-cta{flex-direction:column;align-items:flex-start;gap:1rem;width:auto}
+  .hero-cta .btn{width:auto}
+  .hero--bleed:not(.hero--left) .hero-cta{align-items:center}
+  .hero--left .hero-inner{padding-block:calc(64px + 1.5rem) 2.5rem}
+  .hero--left .hero-bg img{transform:translateY(25%)}
+  .strip-inner{align-items:center}
+  .strip-inner .btn{width:auto}
+  .cta-band .btn{width:auto}
+  .cta-band{text-align:left}
+  .calc-result .btn--block{width:100%}
+  .site-footer{padding-bottom:2rem}
+}
+
+/* v3.6 hero image: no transforms or masks (they made it shift while scrolling on phones) */
+.hero-bg{overflow:hidden}
+.hero--left .hero-bg img{position:absolute;max-width:none;transform:none;-webkit-mask-image:none;mask-image:none;object-position:64% 62%;width:114%;height:114%;top:-8.4%;left:0}
+@media (max-width:960px){
+  .hero--left .type-lead{display:block;font-size:1.02rem;margin:0 0 .4rem}
+  .hero--left .fineprint,.hero--left .hero-note{display:none}
+  /* whole car, fixed size in vw, anchored to the bottom; text above it */
+  .hero--left .hero-bg img{width:min(265vw,1900px);height:auto;aspect-ratio:3/2;top:auto;bottom:calc(-0.1533 * min(265vw,1900px) + 20px);left:calc(50% - 0.63 * min(265vw,1900px));object-position:center}
+  .hero--left .hero-bg::before{content:"";position:absolute;z-index:1;left:0;right:0;height:30vw;bottom:calc(0.1533 * -1 * min(265vw,1900px) + 20px + 0.6667 * min(265vw,1900px) - 24vw);background:linear-gradient(to bottom,var(--navy-deep) 0%,var(--navy-deep) 20%,transparent 100%)}
+  .hero--left .hero-bg::after{z-index:2;background:linear-gradient(180deg,rgba(20,38,64,.85) 0%,rgba(20,38,64,.55) 45%,rgba(20,38,64,.05) 72%,rgba(20,38,64,.25) 100%)}
+  .hero--left .hero-inner{padding-bottom:calc(0.29 * 0.6667 * min(265vw,1900px) + 40px)}
+}
+
+/* v3.7 mobile audit fixes */
+/* touch targets: at least 44px */
+.logo{display:inline-flex;align-items:center;min-height:44px}
+.menu-toggle{min-height:44px;min-width:44px;justify-content:center}
+.btn--sm{min-height:44px;display:inline-flex;align-items:center;justify-content:center}
+.text-link{min-height:44px}
+.seg button{min-height:44px}
+.field-box{min-height:44px}
+.field-box input{height:40px}
+@media (max-width:960px){
+  .site-footer li a{display:inline-flex;align-items:center;min-height:44px}
+}
+/* sliders: 44px touch area, 6px track drawn on the track itself */
+input[type=range]{height:44px;background:transparent;margin:0}
+input[type=range]::-webkit-slider-runnable-track{height:6px;border-radius:6px;background:linear-gradient(90deg,var(--magenta) var(--fill,50%),var(--line) var(--fill,50%))}
+input[type=range]::-webkit-slider-thumb{margin-top:-9px}
+input[type=range]::-moz-range-track{height:6px;border-radius:6px;background:var(--line)}
+input[type=range]::-moz-range-progress{height:6px;border-radius:6px;background:var(--magenta)}
+/* calculator: the monthly figure stays in view while you adjust the inputs (phones) */
+.calc-mini{display:none}
+@media (max-width:960px){
+  .calc{display:block}
+  .calc-inputs{margin-bottom:24px}
+  .calc-mini{display:flex;align-items:center;justify-content:space-between;gap:12px;position:sticky;top:68px;z-index:60;background:#fff;border:1px solid var(--line);border-radius:16px;padding:.5rem .6rem .5rem 1rem;box-shadow:0 10px 24px rgba(32,55,87,.16);margin-bottom:16px}
+  .calc-mini-text{margin:0;line-height:1.15;color:var(--muted);font-size:.8rem;font-weight:600}
+  .calc-mini-label{display:block}
+  .calc-mini-text strong{font-family:var(--font-display);font-size:1.4rem;color:var(--navy);font-weight:900}
+}
+/* comparison table on phones: label, then HP and PCP side by side */
+@media (max-width:640px){
+  .compare tbody tr{display:grid;grid-template-columns:1fr 1fr;column-gap:.9rem;row-gap:.1rem;padding:.9rem 1rem}
+  .compare tbody th{grid-column:1/-1;padding:0 0 .4rem;font-size:1rem}
+  .compare td{padding:0;font-size:.92rem;line-height:1.4}
+  .compare td::before{content:attr(data-label);display:block;font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--magenta);font-weight:800;margin-bottom:.15rem}
+  /* shorter page: 2-up benefit cards, tighter sections */
+  .cols-4{grid-template-columns:1fr 1fr;gap:12px}
+  .cols-4 .card{padding:1.1rem}
+  .cols-4 .ico{font-size:1.5rem}
+  .cols-4 .type-h3{font-size:1rem}
+  .cols-4 .card p{font-size:.9rem}
+  .section-space{padding-block:3rem}
+}
+/* phones held sideways: the desktop-style hero (text left, car right), no tall hero */
+@media (max-width:960px) and (orientation:landscape) and (max-height:540px){
+  .hero--bleed{min-height:0}
+  .hero--left .hero-inner{padding-block:calc(64px + 1.2rem) 2rem}
+  .hero--left .hero-inner>*{max-width:min(520px,46vw)}
+  .hero--left .type-h1{max-width:min(520px,46vw);font-size:clamp(1.8rem,5vw,2.8rem)}
+  .hero--left .type-lead{display:none}
+  .hero--left .hero-bg img{width:114%;height:114%;top:-8.4%;bottom:auto;left:0;aspect-ratio:auto;object-position:64% 62%}
+  .hero--left .hero-bg::before{display:none}
+  .hero--left .hero-bg::after{background:linear-gradient(90deg,rgba(20,38,64,.92) 0%,rgba(20,38,64,.78) 32%,rgba(20,38,64,.25) 58%,rgba(20,38,64,.05) 100%)}
+}
+.field-box input{height:44px}
+@media (max-width:960px){.site-footer li a{min-width:44px}}
+/* shorter phone page: compact product cards and a two-column footer */
+@media (max-width:640px){
+  .product-photo{aspect-ratio:2/1}
+  .product-card .checks{display:none}
+  .product-body{padding:1.2rem}
+  .foot-grid{grid-template-columns:1fr 1fr;gap:1.5rem 1rem}
+  .foot-grid>div:first-child,.foot-grid>div:last-child{grid-column:1/-1}
+}
+/* keep the hero photo and its overlays in their own layer, always behind the text */
+.hero-bg{z-index:0;isolation:isolate}
+.hero--bleed .hero-inner{z-index:2}
+
+/* v3.8 phones (portrait): hero content centred, sitting in the space above the car */
+@media (max-width:960px) and (orientation:portrait){
+  .hero--left{text-align:center;align-items:stretch}
+  .hero--left .hero-inner{align-items:center;justify-content:center;text-align:center}
+  .hero--left .type-h1{text-wrap:balance}
+  .hero--left .type-lead{margin-inline:auto}
+  .hero--left .hero-cta{align-items:center;justify-content:center}
+  .hero--left .hero-note{justify-content:center}
+}
+/* centre exactly between the header and the top of the car (16px minimum clearance each side) */
+@media (max-width:960px) and (orientation:portrait){
+  .hero--left .hero-inner{padding-block:calc(65px + 16px) calc(0.29 * 0.6667 * min(265vw,1900px) + 14px)}
+}
+/* phones (portrait): hero fills the first screen; car stays at the bottom, the content centres in the space above it */
+@media (max-width:960px) and (orientation:portrait){
+  .hero--left{min-height:100vh;min-height:100svh}
+}
+/* phones (portrait): sit the content low, just above the car (about 20px clearance) */
+@media (max-width:960px) and (orientation:portrait){
+  .hero--left .hero-inner{justify-content:flex-end;padding-bottom:calc(0.29 * 0.6667 * min(265vw,1900px) + 14px)}
+}
+
+/* phones (portrait): the whole text block is centred on the middle of the photo, overlapping the car */
+@media (max-width:960px) and (orientation:portrait){
+  .hero--left{align-items:end;min-height:max(100vh,calc(91px + 0.2567 * min(265vw,1900px) + 200px));min-height:max(100svh,calc(91px + 0.2567 * min(265vw,1900px) + 200px))}
+  .hero--left .hero-inner{min-height:0;padding-block:0;justify-content:flex-start;margin-bottom:calc(0.2567 * min(265vw,1900px) + 10px);transform:translateY(50%);width:100%}
+  .hero--left .hero-inner>*{text-shadow:0 2px 14px rgba(10,20,40,.7)}
+  .hero--left .btn{text-shadow:none}
+  .hero--left .hero-bg::after{background:linear-gradient(180deg,rgba(20,38,64,.85) 0%,rgba(20,38,64,.72) 45%,rgba(20,38,64,.6) 72%,rgba(20,38,64,.5) 100%)}
+}
+/* v3.9: a little higher than centred-on-photo, and a lighter overlay so the car shows */
+@media (max-width:960px) and (orientation:portrait){
+  .hero--left .hero-inner{margin-bottom:calc(0.2567 * min(265vw,1900px) + 84px)}
+  .hero--left .hero-bg::after{background:linear-gradient(180deg,rgba(20,38,64,.8) 0%,rgba(20,38,64,.55) 40%,rgba(20,38,64,.36) 62%,rgba(20,38,64,.2) 82%,rgba(20,38,64,.28) 100%)}
+  .hero--left{min-height:max(100vh,calc(91px + 0.2567 * min(265vw,1900px) + 284px));min-height:max(100svh,calc(91px + 0.2567 * min(265vw,1900px) + 284px))}
+}
