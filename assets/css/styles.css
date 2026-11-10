@@ -510,3 +510,6 @@ input[type=range]::-moz-range-progress{height:6px;border-radius:6px;background:v
   .hero--left .hero-bg::after{background:linear-gradient(180deg,rgba(20,38,64,.8) 0%,rgba(20,38,64,.55) 40%,rgba(20,38,64,.36) 62%,rgba(20,38,64,.2) 82%,rgba(20,38,64,.28) 100%)}
   .hero--left{min-height:max(100vh,calc(91px + 0.2567 * min(265vw,1900px) + 284px));min-height:max(100svh,calc(91px + 0.2567 * min(265vw,1900px) + 284px))}
 }
+
+/* v4.0 phone header pill: only after the hero has been scrolled past */
+body.has-bleed:not(.hero-past) .btn.btn--pill-mobile{display:none}

@@ -14,8 +14,12 @@
   function updateHeader() {
     if (!bleed) return;
     document.body.classList.toggle('hdr-clear', window.scrollY <= 24 && !menuOpen);
+    // phone header pill stays hidden until the hero has been scrolled past
+    var hero = document.querySelector('.hero');
+    document.body.classList.toggle('hero-past', !hero || hero.getBoundingClientRect().bottom <= 70);
   }
   window.addEventListener('scroll', updateHeader, { passive: true });
+  updateHeader();
 
   function setMenu(open) {
     menuOpen = open;
