@@ -1,0 +1,12 @@
+{
+  "name": "creditplus",
+  "version": "2.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Creditplus static site. Zero dependencies: `npm run build` renders src/ into plain HTML at the repo root.",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "test": "node --test tests/*.test.mjs",
+    "serve": "npx --yes serve -l 5173 ."
+  }
+}
