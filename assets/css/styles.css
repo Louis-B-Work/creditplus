@@ -251,7 +251,7 @@ input[type=range]::-moz-range-thumb{width:20px;height:20px;border-radius:50%;bac
 .btn--lg{font-size:1.25rem;padding:1.05em 2.4em;box-shadow:0 10px 30px rgba(194,27,179,.38)}
 .btn--lg:hover{box-shadow:0 14px 36px rgba(194,27,179,.5)}
 .btn--block{width:100%;justify-content:center}
-.btn--pill-mobile{display:none}
+.btn.btn--pill-mobile{display:none}
 .header-right{display:flex;align-items:center;gap:8px}
 .text-link{display:inline-flex;align-items:center;gap:.5em;color:var(--magenta);font-weight:700;font-size:1.1rem;text-decoration:none}
 .text-link-label{border-bottom:2px solid currentColor;padding-bottom:2px}
@@ -303,7 +303,7 @@ input[type=range]::-moz-range-thumb{width:20px;height:20px;border-radius:50%;bac
 .site-footer .btn,.site-footer .btn:hover{color:#fff;text-decoration:none}
 
 @media (max-width:1100px){
-  .btn--pill-mobile{display:inline-flex}
+  .btn.btn--pill-mobile{display:inline-flex}
 }
 @media (max-width:960px){
   .hero--bleed{min-height:max(560px,88svh)}
