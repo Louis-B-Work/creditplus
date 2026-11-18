@@ -518,3 +518,9 @@ body.has-bleed:not(.hero-past) .btn.btn--pill-mobile{display:none}
 @media (min-width:961px){
   .hero--left .type-h1{max-width:min(1040px,64vw);font-size:clamp(2.4rem,4.3vw,4.2rem)}
 }
+
+/* v4.2 desktop hero fills the screen */
+@media (min-width:961px){
+  .hero--bleed,.hero--left{min-height:100vh;min-height:100svh}
+  .hero--left .hero-inner{justify-content:center}
+}
