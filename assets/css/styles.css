@@ -524,3 +524,7 @@ body.has-bleed:not(.hero-past) .btn.btn--pill-mobile{display:none}
   .hero--bleed,.hero--left{min-height:100vh;min-height:100svh}
   .hero--left .hero-inner{justify-content:center}
 }
+
+/* v4.3 every Get my quote button matches the nav button size */
+.btn--lg,.btn--sm{font-size:.92rem;padding:.55em 1.2em;min-height:44px;display:inline-flex;align-items:center;justify-content:center;box-shadow:0 6px 18px rgba(194,27,179,.3)}
+.btn--lg:hover,.btn--sm:hover{box-shadow:0 8px 22px rgba(194,27,179,.42)}
